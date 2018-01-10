@@ -46,22 +46,6 @@ def perceptron(feature_matrix, labels, T=5):
         the average theta and the second element is a real number with the
         value of the average theta_0.
     """
-    # m = feature_matrix.shape[1]
-    # theta= np.zeros(m) 
-    # theta0=0.0 
-    # n = labels.shape[0]
-    # thetaSum = np.zeros(m)
-    # thetaZeroSum = 0.0
-    # for t in range(T): 
-    #     for i in range(labels.shape[0]): 
-    #         if(labels[i]*(np.dot(theta,feature_matrix[i]))+theta0) <= 0: 
-    #             theta = theta + np.dot(labels[i], feature_matrix[i]) 
-    #             theta0 = theta0 + labels[i] 
-
-    #             thetaSum += theta
-    #             thetaZeroSum += theta0
-    # return thetaSum/(n*T), thetaZeroSum/(n*T)
-
     n, d = feature_matrix.shape
 
     theta = np.zeros(d)
