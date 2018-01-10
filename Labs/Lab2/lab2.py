@@ -23,6 +23,10 @@ def perceptron_single_step_update(feature_vector, label, current_theta, current_
         real valued number with the value of theta_0 after the current updated has
         completed.
     """
+    theta = current_theta + label * feature_vector
+    theta_0 = current_theta_0 + label
+
+    return theta, theta_0
 
     raise NotImplementedError
 
@@ -42,8 +46,47 @@ def perceptron(feature_matrix, labels, T=5):
         the average theta and the second element is a real number with the
         value of the average theta_0.
     """
+    # m = feature_matrix.shape[1]
+    # theta= np.zeros(m) 
+    # theta0=0.0 
+    # n = labels.shape[0]
+    # thetaSum = np.zeros(m)
+    # thetaZeroSum = 0.0
+    # for t in range(T): 
+    #     for i in range(labels.shape[0]): 
+    #         if(labels[i]*(np.dot(theta,feature_matrix[i]))+theta0) <= 0: 
+    #             theta = theta + np.dot(labels[i], feature_matrix[i]) 
+    #             theta0 = theta0 + labels[i] 
 
-    raise NotImplementedError
+    #             thetaSum += theta
+    #             thetaZeroSum += theta0
+    # return thetaSum/(n*T), thetaZeroSum/(n*T)
+
+    n, d = feature_matrix.shape
+
+    theta = np.zeros(d)
+    theta_0 = 0
+
+    theta_sum = np.zeros(d)
+    theta_0_sum = 0
+
+    for t in range(T):
+        for i in range(n):
+            feature_vector = feature_matrix[i]
+            label = labels[i]
+
+            if (label * (np.dot(theta, feature_vector) + theta_0)<=0):
+                theta, theta_0 = perceptron_single_step_update(feature_vector, label, theta, theta_0)
+
+            theta_sum = theta_sum + theta
+
+            theta_0_sum = theta_0_sum+ theta_0
+            
+    average_theta = theta_sum / (n*T)
+    average_theta_0 = theta_0_sum/(n*T)
+
+    return average_theta, average_theta_0
+
 
 ### Part 2 - Classifying Reviews
 
