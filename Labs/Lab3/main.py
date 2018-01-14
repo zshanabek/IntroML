@@ -48,29 +48,29 @@ plt.show()
 # Part 1.2 - Modifying hyperparameters
 #-------------------------------------------------------------------------------
 
-# # Modify T
-# Ts = [5]
-# for index, T in enumerate(Ts):
-#     theta, theta_0 = lab3.pegasos(X, y, T=T, eta=0.01, lam=0.01)
-#     subplot = int(str(int(math.ceil(math.sqrt(len(Ts))))) * 2 + str(index + 1))
-#     utils.plot_linear_classifier(X, y, theta, theta_0, title='T = {}'.format(T), subplot=subplot)
-# plt.show()
+# Modify T
+Ts = [5]
+for index, T in enumerate(Ts):
+    theta, theta_0 = lab3.pegasos(X, y, T=T, eta=0.01, lam=0.01)
+    subplot = int(str(int(math.ceil(math.sqrt(len(Ts))))) * 2 + str(index + 1))
+    utils.plot_linear_classifier(X, y, theta, theta_0, title='T = {}'.format(T), subplot=subplot)
+plt.show()
 
-# # Modify eta
-# etas = [0.01]
-# for index, eta in enumerate(etas):
-#     theta, theta_0 = lab3.pegasos(X, y, T=20, eta=eta, lam=0.01)
-#     subplot = int(str(int(math.ceil(math.sqrt(len(etas))))) * 2 + str(index + 1))
-#     utils.plot_linear_classifier(X, y, theta, theta_0, title='eta = {}'.format(eta), subplot=subplot)
-# plt.show()
+# Modify eta
+etas = [0.01]
+for index, eta in enumerate(etas):
+    theta, theta_0 = lab3.pegasos(X, y, T=20, eta=eta, lam=0.01)
+    subplot = int(str(int(math.ceil(math.sqrt(len(etas))))) * 2 + str(index + 1))
+    utils.plot_linear_classifier(X, y, theta, theta_0, title='eta = {}'.format(eta), subplot=subplot)
+plt.show()
 
-# # Modify lambda
-# lams = [0.01]
-# for index, lam in enumerate(lams):
-#     theta, theta_0 = lab3.pegasos(X, y, T=20, eta=0.01, lam=lam)
-#     subplot = int(str(int(math.ceil(math.sqrt(len(lams))))) * 2 + str(index + 1))
-#     utils.plot_linear_classifier(X, y, theta, theta_0, title='lambda = {}'.format(lam), subplot=subplot)
-# plt.show()
+# Modify lambda
+lams = [0.01]
+for index, lam in enumerate(lams):
+    theta, theta_0 = lab3.pegasos(X, y, T=20, eta=0.01, lam=lam)
+    subplot = int(str(int(math.ceil(math.sqrt(len(lams))))) * 2 + str(index + 1))
+    utils.plot_linear_classifier(X, y, theta, theta_0, title='lambda = {}'.format(lam), subplot=subplot)
+plt.show()
 
 #-------------------------------------------------------------------------------
 # Part 2 - SVM
