@@ -19,5 +19,16 @@ def pegasos(feature_matrix, labels, T=5, eta=0.1, lam=0.1):
         A tuple where the first element is a numpy array describing theta and the
         second element is the real number theta_0.
     """
-
+    n, d = feature_matrix.shape
+    theta = np.zeros(d)
+    theta_0 = 0
+    for t in range(T):  
+        for i in range(n):
+            feature_vector = feature_matrix[i]
+            label = labels[i]
+            if label*(np.dot(theta,feature_vector)) <= 1:
+                theta-=(eta*((-label)*feature_vector+lam*theta))
+            else:
+                theta-=eta*(lam*theta)
+    return theta
     raise NotImplementedError

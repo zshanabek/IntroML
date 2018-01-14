@@ -40,9 +40,9 @@ val_texts, val_labels = zip(*((sample['text'], sample['sentiment']) for sample i
 # Part 1.1 - Implementation
 #-------------------------------------------------------------------------------
 
-# theta, theta_0 = lab3.pegasos(X, y, T=5, eta=0.01, lam=0.01)
-# utils.plot_linear_classifier(X, y, theta, theta_0)
-# plt.show()
+theta, theta_0 = lab3.pegasos(X, y, T=5, eta=0.01, lam=0.01)
+utils.plot_linear_classifier(X, y, theta, theta_0)
+plt.show()
 
 #-------------------------------------------------------------------------------
 # Part 1.2 - Modifying hyperparameters

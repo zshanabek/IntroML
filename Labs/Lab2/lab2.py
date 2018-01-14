@@ -3,7 +3,7 @@ from string import punctuation, digits
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import metrics
-
+from sklearn.metrics import accuracy_score
 ### Part 1 - Perceptron Algorithm
 
 def perceptron_single_step_update(feature_vector, label, current_theta, current_theta_0):
@@ -58,14 +58,13 @@ def perceptron(feature_matrix, labels, T=5):
         for i in range(n):
             feature_vector = feature_matrix[i]
             label = labels[i]
-
-            if (label * (np.dot(theta, feature_vector) + theta_0)<=0):
+            if label * (np.dot(theta, feature_vector) + theta_0) <= 0:
                 theta, theta_0 = perceptron_single_step_update(feature_vector, label, theta, theta_0)
 
             theta_sum = theta_sum + theta
 
             theta_0_sum = theta_0_sum+ theta_0
-            
+
     average_theta = theta_sum / (n*T)
     average_theta_0 = theta_0_sum/(n*T)
 
@@ -89,6 +88,8 @@ def classify(feature_matrix, theta, theta_0=0):
         and theta_0.
     """
 
+    return np.sign(np.dot(feature_matrix,theta)+theta_0)
+
     raise NotImplementedError
 
 def accuracy(feature_matrix, labels, theta, theta_0=0):
@@ -106,6 +107,15 @@ def accuracy(feature_matrix, labels, theta, theta_0=0):
         The accuracy of the model on the provided data.
     """
 
+    new_labels = classify(feature_matrix, theta, theta_0)
+    
+    n = np.shape(labels)[0]
+    summ = 0
+    for i in range(n):
+        if new_labels[i] == labels[i]:
+            summ+=1
+    
+    return summ/n
     raise NotImplementedError
 
 ### Part 3 - Improving the Model
@@ -132,6 +142,12 @@ def tune(Ts, train_feature_matrix, train_labels, val_feature_matrix, val_labels)
         for each parameter value.
     """
 
+    ret_t,ret_v =[],[]
+    for T  in Ts:
+        theta,theta_0 = perceptron(train_feature_matrix, train_labels,T)
+        ret_t.append(accuracy(train_feature_matrix ,train_labels, theta, theta_0))
+        ret_v.append(accuracy(val_feature_matrix ,val_labels, theta, theta_0))
+    return np.array(ret_t),np.array(ret_v)
     raise NotImplementedError
 
 def extract_words(input_string):
