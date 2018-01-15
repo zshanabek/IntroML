@@ -49,7 +49,7 @@ plt.show()
 #-------------------------------------------------------------------------------
 
 # Modify T
-Ts = [5]
+Ts = [1, 5, 10, 15, 20, 25]
 for index, T in enumerate(Ts):
     theta, theta_0 = lab3.pegasos(X, y, T=T, eta=0.01, lam=0.01)
     subplot = int(str(int(math.ceil(math.sqrt(len(Ts))))) * 2 + str(index + 1))
@@ -57,7 +57,7 @@ for index, T in enumerate(Ts):
 plt.show()
 
 # Modify eta
-etas = [0.01]
+etas = [10, 1, 0.1, 0.01, 0.001, 1e-4, 1e-5, 1e-6]
 for index, eta in enumerate(etas):
     theta, theta_0 = lab3.pegasos(X, y, T=20, eta=eta, lam=0.01)
     subplot = int(str(int(math.ceil(math.sqrt(len(etas))))) * 2 + str(index + 1))
@@ -65,7 +65,7 @@ for index, eta in enumerate(etas):
 plt.show()
 
 # Modify lambda
-lams = [0.01]
+lams = [100, 10, 1, 0.1, 0.01, 0.001]
 for index, lam in enumerate(lams):
     theta, theta_0 = lab3.pegasos(X, y, T=20, eta=0.01, lam=lam)
     subplot = int(str(int(math.ceil(math.sqrt(len(lams))))) * 2 + str(index + 1))

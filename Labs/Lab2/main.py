@@ -55,17 +55,17 @@ test_final_features = lab2.extract_final_features(test_texts, dictionary)
 # Part 3.1 - Tuning the Hyperparameters
 #-------------------------------------------------------------------------------
 
-Ts = [1, 5, 10, 15, 20]
+# Ts = [1, 5, 10, 15, 20]
 
-train_accs, val_accs = lab2.tune(Ts, train_bow_features, train_labels, val_bow_features, val_labels)
+# train_accs, val_accs = lab2.tune(Ts, train_bow_features, train_labels, val_bow_features, val_labels)
 
-utils.plot_tune_results(Ts, train_accs, val_accs)
+# utils.plot_tune_results(Ts, train_accs, val_accs)
 
 #-------------------------------------------------------------------------------
 # Best T value
 #-------------------------------------------------------------------------------
 
-T_best = 1 # You may modify this value
+T_best = 10 # You may modify this value
 
 #-------------------------------------------------------------------------------
 # Part 3.2 - Understanding the Model
@@ -83,25 +83,25 @@ T_best = 1 # You may modify this value
 # Part 3.3 - Adding Features
 #-------------------------------------------------------------------------------
 
-# theta, theta_0 = lab2.perceptron(train_bow_features, train_labels, T_best)
+theta, theta_0 = lab2.perceptron(train_bow_features, train_labels, T_best)
 
-# train_accuracy = lab2.accuracy(train_bow_features, train_labels, theta, theta_0)
-# val_accuracy = lab2.accuracy(val_bow_features, val_labels, theta, theta_0)
+train_accuracy = lab2.accuracy(train_bow_features, train_labels, theta, theta_0)
+val_accuracy = lab2.accuracy(val_bow_features, val_labels, theta, theta_0)
 
-# print("Bag-of-words features")
-# print("Training accuracy: {:.4f}".format(train_accuracy))
-# print("Validation accuracy: {:.4f}".format(val_accuracy))
+print("Bag-of-words features")
+print("Training accuracy: {:.4f}".format(train_accuracy))
+print("Validation accuracy: {:.4f}".format(val_accuracy))
 
-# print()
+print()
 
-# theta, theta_0 = lab2.perceptron(train_final_features, train_labels, T_best)
+theta, theta_0 = lab2.perceptron(train_final_features, train_labels, T_best)
 
-# train_accuracy = lab2.accuracy(train_final_features, train_labels, theta, theta_0)
-# val_accuracy = lab2.accuracy(val_final_features, val_labels, theta, theta_0)
+train_accuracy = lab2.accuracy(train_final_features, train_labels, theta, theta_0)
+val_accuracy = lab2.accuracy(val_final_features, val_labels, theta, theta_0)
 
-# print("Custom features")
-# print("Training accuracy: {:.4f}".format(train_accuracy))
-# print("Validation accuracy: {:.4f}".format(val_accuracy))
+print("Custom features")
+print("Training accuracy: {:.4f}".format(train_accuracy))
+print("Validation accuracy: {:.4f}".format(val_accuracy))
 
 #-------------------------------------------------------------------------------
 # Part 4 - Testing the Model
